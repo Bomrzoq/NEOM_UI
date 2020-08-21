@@ -1,4 +1,36 @@
 <!DOCTYPE html>
+<!-- javascript -->
+<script>
+    function addRowToTable()
+{
+  var tbl = document.getElementById('tblSample');
+  var lastRow = tbl.rows.length;
+  // if there's no header row in the table, then iteration = lastRow + 1
+  var iteration = lastRow;
+  var row = tbl.insertRow(lastRow);
+
+  // left cell
+  var cellLeft = row.insertCell(0);
+  var textNode = document.createTextNode(iteration);
+  cellLeft.appendChild(textNode);
+
+  // right cell
+  var cellRight = row.insertCell(1);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'txtRow' + iteration;
+  el.id = 'txtRow' + iteration;
+  el.size = 40;
+  cellRight.appendChild(el);
+ }
+
+function removeRowFromTable()
+{
+  var tbl = document.getElementById('tblSample');
+  var lastRow = tbl.rows.length;
+  if (lastRow > 2) tbl.deleteRow(lastRow - 1);
+}
+</script>
 <html lang="en">
     
 <!-------------------/\------------------->
@@ -43,6 +75,31 @@
         <![endif]-->
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/minus.png">
+    <style>
+        #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+        
+        </style>
 </head>
     
 <!-------------------/\------------------->
@@ -592,7 +649,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <span class="tittle-alert entypo-info-circled"></span>
                                 Welcome back,&nbsp;
-                                <strong>Bomrzoq!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                                <strong>Noura!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
                             </div>
 
 
@@ -661,9 +718,94 @@
                         <!-- BLANK PAGE-->
 
                         <div class="nest" id="Blank_PageClose">
+
+                            <table style="width:100%">
+
+                                <!-- table -->
+                                <table id="customers">
+                                    <tr>
+                                      <th> Vehicle ID </th>
+                                      <th>Speed km/h</th>
+                                      <th>Passengers</th>
+                                      <th>Available Seats</th>
+                                  
+                                    </tr>
+                                    <tr>
+                                      <td>W-3001</td>
+                                      <td>70</td>
+                                      <td>65</td>
+                                      <td>35</td>
+                                  
+                                  
+                                    </tr>
+                                    <tr>
+                                      <td>X-6040</td>
+                                          <td>62</td>
+                                  
+                                      <td>98</td>
+                                      <td>2</td>
+                                    </tr>
+                                    <tr>
+                                      <td>H-3470 </td>
+                                          <td>79</td>
+                                  
+                                      <td>78</td>
+                                      <td>22</td>
+                                    </tr>
+                                    <tr>
+                                      <td>T-1203</td>
+                                          <td>0</td>
+                                  
+                                      <td>0</td>
+                                      <td>100</td>
+                                    </tr>
+                                    <tr>
+                                      <td>E-7002</td>
+                                          <td>70</td>
+                                  
+                                      <td>48</td>
+                                      <td>52</td>
+                                    </tr>
+                                    <tr>
+                                      <td>F-4022</td>
+                                          <td>76</td>
+                                  
+                                      <td>89</td>
+                                      <td>11</td>
+                                    </tr>
+                                    <tr>
+                                      <td>K-3490</td>
+                                          <td>60</td>
+                                  
+                                      <td>70</td>
+                                      <td>30</td>
+                                    </tr>
+                                    <tr>
+                                      <td>M-7802</td>
+                                          <td>69</td>
+                                      <td>78</td>
+                                      <td>22</td>
+                                    </tr>
+                                    <tr>
+                                      <td>G-5253</td>
+                                  
+                                          <td>66</td>
+                                  
+                                      <td>95</td>
+                                      <td>5</td>
+                                    </tr>
+                                    <tr>
+                                      <td>P-1881</td>
+                                          <td>73</td>
+                                  
+                                      <td>81 </td>
+                                      <td>19</td>
+                                    </tr>
+                                  </table>
+
                             <div class="title-alt">
                                 <h6>
-                                    Map for NEOM</h6>
+                                    Map for Noura</h6>
                                 <div class="titleClose">
                                     <a class="gone" href="#Blank_PageClose">
                                         <span class="entypo-cancel"></span>
@@ -671,128 +813,10 @@
                                 </div>
                                 <div class="titleToggle">
                                     <a class="nav-toggle-alt" href="#Blank_Page_Content">
-                                        <span class="entypo-up-open"></span>
-                                    </a>
-                                </div>
+                       
 
-                            </div>
-
-                            <div class="body-nest" id="Blank_Page_Content">
-
-                                <div style="width: 640px; height: 480px" id="mapContainer">
-                                    <script>
-                                        var platform = new H.service.Platform({
-                                            'apikey': '6B2rK5nk9-0i-pQqnRWgCAaq7JwC_rIBH6aPUYriqK8'
-                                        });
-                                
-                                        
-                                        var maptypes = platform.createDefaultLayers();
-                                        // Instantiate (and display) a map object:
-                                        var map = new H.Map(
-                                            document.getElementById('mapContainer'),
-                                            maptypes.vector.normal.map,
-                                            {   
-                                            zoom: 14,
-                                            center: { lat:  25.4243 , lng: 49.6198 }
-                                            });
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END OF BLANK PAGE -->
-                    </div>
-                </div>
-            </div>
-                <!-- /END OF CONTENT -->
-
-
-
-                <!-- FOOTER -->
-                <div class="footer-space"></div>
-                <div id="footer">
-                    <div class="devider-footer-left"></div>
-                    <div class="time">
-                        <p id="spanDate"></p>
-                        <p id="clock"></p>
-                    </div>
-                    <div class="copyright">Make with Love
-                        <span class="entypo-heart"></span>2014 <a href="http://gamatechno.com">Thesmile</a> All Rights Reserved</div>
-                    <div class="devider-footer"></div>
-
-                </div>
-                <!-- / END OF FOOTER -->
-
-
-            </div>
-        </div>
-        <!--  END OF PAPER WRAP -->
-
-        <!-- RIGHT SLIDER CONTENT -->
-        <div class="sb-slidebar sb-right">
-            <div class="right-wrapper">
-                <div class="row">
-                    <h3>
-                        <span><i class="entypo-gauge"></i>&nbsp;&nbsp;MAIN WIDGET</span>
-                    </h3>
-                    <div class="col-sm-12">
-
-                        <div class="widget-knob">
-                            <span class="chart" style="position:relative" data-percent="86">
-                                <span class="percent"></span>
-                            </span>
-                        </div>
-                        <div class="widget-def">
-                            <b>Distance traveled</b>
-                            <br>
-                            <i>86% to the check point</i>
-                        </div>
-
-                        <div class="widget-knob">
-                            <span class="speed-car" style="position:relative" data-percent="60">
-                                <span class="percent2"></span>
-                            </span>
-                        </div>
-                        <div class="widget-def">
-                            <b>The average speed</b>
-                            <br>
-                            <i>30KM/h avarage speed</i>
-                        </div>
-
-
-                        <div class="widget-knob">
-                            <span class="overall" style="position:relative" data-percent="25">
-                                <span class="percent3"></span>
-                            </span>
-                        </div>
-                        <div class="widget-def">
-                            <b>Overall result</b>
-                            <br>
-                            <i>30KM/h avarage Result</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top:0;" class="right-wrapper">
-                <div class="row">
-                    <h3>
-                        <span><i class="entypo-chat"></i>&nbsp;&nbsp;CHAT</span>
-                    </h3>
-                    <div class="col-sm-12">
-                        <span class="label label-warning label-chat">Online</span>
-                        <ul class="chat">
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/20.jpg">
-                                    </span><b>Dave Junior</b>
-                                    <br><i>Last seen : 08:00 PM</i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/21.jpg">
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
                                     </span><b>Kenneth Lucas</b>
                                     <br><i>Last seen : 07:21 PM</i>
                                 </a>
@@ -800,29 +824,15 @@
                             <li>
                                 <a href="#">
                                     <span>
-                                        <img alt="" class="img-chat img-circle" src="http://api.randomuser.me/portraits/thumb/men/22.jpg">
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
                                     </span><b>Heidi Perez</b>
                                     <br><i>Last seen : 05:43 PM</i>
                                 </a>
                             </li>
 
 
-                        </ul>
-
-                        <span class="label label-chat">Offline</span>
-                        <ul class="chat">
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/23.jpg">
-                                    </span><b>Dave Junior</b>
-                                    <br><i>Last seen : 08:00 PM</i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/24.jpg">
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
                                     </span><b>Kenneth Lucas</b>
                                     <br><i>Last seen : 07:21 PM</i>
                                 </a>
@@ -830,14 +840,302 @@
                             <li>
                                 <a href="#">
                                     <span>
-                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/25.jpg">
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
                                     </span><b>Heidi Perez</b>
                                     <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
+                                    </span><b>Kenneth Lucas</b>
+                                    <br><i>Last seen : 07:21 PM</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>
+                                        <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/men/26.jpg">
+                                    </span><b>Heidi Perez</b>
+                                    <br><i>Last seen : 05:43 PM</i>
+                                </a>
+                            </li>
+
+
+                        </ul>       <span>
                                         <img alt="" class="img-chat img-offline img-circle" src="http://api.randomuser.me/portraits/thumb/women/25.jpg">
                                     </span><b>Kenneth Lucas</b>
                                     <br><i>Last seen : 07:21 PM</i>
